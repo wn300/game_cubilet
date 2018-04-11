@@ -1,1 +1,190 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'Kaushan Script';
+    font-style: normal;
+    font-weight: 400;
+    src: local('☺'),
+        url("../fonts/Kaushan+Script_400_normal.woff") format('woff'), 
+        url("../fonts/Kaushan+Script_400_normal.ttf") format('truetype'), 
+        url("../fonts/Kaushan+Script_400_normal.svg#Kaushan+Script_400_normal") format('svg'); 
+}
+
+body {
+    background-color: #842525 !important;
+}
+
+nav{
+    background-color: #989898;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);    
+    transition:all .5s ease-in-out;
+}
+
+h1 {
+    text-shadow: 1px 0px 1px rgb(233, 181, 181), 0 0 25px rgb(77, 22, 22), 0 0 5px rgb(255, 77, 77) !important;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;
+}
+
+h2 {
+    text-shadow: 1px 0px 1px rgb(255, 255, 255), 0 0 25px rgb(0, 0, 0), 0 0 5px rgb(0, 0, 0) !important;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;
+}
+
+h3, .btn, input {
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.top-general {
+    margin-top: 15px
+}
+
+.title {
+    color: #ffffff;
+    font-size: 20px;
+    text-shadow: 1px 0px 1px rgb(233, 181, 181), 0 0 25px rgb(77, 22, 22), 0 0 5px rgb(255, 77, 77) !important;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;
+}
+
+.front {
+    background-color: rgb(214, 214, 172); 
+    margin-top: 15px;
+    width: 100%;
+    min-height: calc(85vh) !important;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12); 
+    border-radius: 2px
+}
+
+.table-games{
+    width: 80%; 
+    height: calc(60vh); 
+    border: 20px solid rgb(73, 56, 36); 
+    margin-left: 10%; 
+    margin-top: 20px;
+    background-color: #2d963b;
+    border-radius: 30%;
+    box-shadow: -11px 16px 7px 0 rgba(0,0,0,.2), 0 5px 1px 0 rgba(0,0,0,.14), -6px 10px 5px -1px rgba(0,0,0,.12)
+}
+
+.cube{
+    width: 100px;
+    margin-left: 33px;
+    height: 100px;
+    margin-top: 51px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);     
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;
+    font-size: 60px;
+    text-align: center;    
+}
+
+.nine {
+    text-shadow: 1px 0px 1px rgb(233, 181, 181), 0 0 25px rgb(77, 22, 22), 0 0 5px rgb(255, 77, 77) !important;
+}
+
+.then {
+    text-shadow: 1px 0px 1px rgb(181, 233, 198), 0 0 25px rgb(53, 77, 22), 0 0 5px rgb(77, 255, 116) !important;
+}
+
+.j {
+    text-shadow: 1px 0px 1px rgb(181, 191, 233), 0 0 25px rgb(22, 23, 77), 0 0 5px rgb(77, 89, 255) !important;
+}
+
+.q {
+    text-shadow: 1px 0px 1px rgb(221, 181, 233), 0 0 25px rgb(77, 22, 77), 0 0 5px rgb(255, 77, 255) !important;
+}
+
+.k {
+    text-shadow: 1px 0px 1px rgb(233, 232, 181), 0 0 25px rgb(77, 69, 22), 0 0 5px rgb(255, 252, 77) !important;
+}
+
+.a {
+    text-shadow: 1px 0px 1px rgb(181, 227, 233), 0 0 25px rgb(22, 75, 77), 0 0 5px rgb(77, 228, 255) !important;
+}
+
+.btn-cube{
+    width: 80%;
+    height: 40px;
+    display: inline-block;
+    margin-top: 1%;        
+    font-size: 25px !important;
+    padding: 2px    
+}
+
+.btn-cube{
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    display: inline-block;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background-color: #ebe841;
+    -webkit-box-shadow:    0 8px 0 #c5ab37, 0 15px 20px rgba(255, 255, 255, 0.35);
+    -moz-box-shadow: 0 8px 0 #c5ab37, 0 15px 20px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 0 #c5ab37, 0 15px 20px rgba(255, 255, 255, 0.35);
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+    -moz-transition: -moz-box-shadow .1s ease-in-out;
+    -o-transition: -o-box-shadow .1s ease-in-out;
+    transition: box-shadow .1s ease-in-out;
+    font-size: 50px;
+    color: #fff;
+    text-align: center; 
+    padding: 0px  ;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;  
+}
+
+.btn-cube:hover{ 
+    background-color: #ecdf6a;
+    text-shadow: 0 -1px 1px rgba(175, 137, 49, 0.9), 0 0 5px rgba(255, 255, 255, 0.8);
+    color:#FFF;
+}
+
+.btn-cube:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.bg-blue {
+    background-color: #131979!important;
+    -webkit-box-shadow:    0 8px 0 #414ceb, 0 15px 20px rgba(255, 255, 255, 0.35)!important;
+    -moz-box-shadow: 0 8px 0 #414ceb, 0 15px 20px rgba(255, 255, 255, 0.35)  !important;
+    box-shadow: 0 8px 0 #414ceb, 0 15px 20px rgba(255, 255, 255, 0.35) !important;
+}
+
+.bg-blue:hover {
+    background-color: #6a77ec !important;
+    text-shadow: 0 -1px 1px rgba(49, 89, 175, 0.9), 0 0 5px rgba(255, 255, 255, 0.8) !important;
+    color:#FFF;
+}
+
+.bg-red {
+    background-color: #7e1313!important;
+    -webkit-box-shadow:    0 8px 0 #eb4141, 0 15px 20px rgba(255, 255, 255, 0.35)!important;
+    -moz-box-shadow: 0 8px 0 #eb4141, 0 15px 20px rgba(255, 255, 255, 0.35)  !important;
+    box-shadow: 0 8px 0 #eb4141, 0 15px 20px rgba(255, 255, 255, 0.35) !important;
+}
+.bg-red:hover {
+    background-color: #ec6a6a !important;
+    text-shadow: 0 -1px 1px rgba(175, 49, 49, 0.9), 0 0 5px rgba(255, 255, 255, 0.8) !important;
+    color:#FFF;
+}
+
+.gamers-index {
+    background: #ffffff;
+    margin-top: 10px !important;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12); 
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}

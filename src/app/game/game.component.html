@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-8">
+    <div class="row  top-general">
+      <div class="col-5 text-center">
+        <h2>Turno de {{turn_player.name}}</h2>
+      </div>
+      <div *ngIf="count_by_player" class="col-3">
+        <h2>Intentos = {{count_by_player}}</h2>
+      </div>
+      <div *ngIf="count_general" class="col-4 text-center">
+        <h2>Maximo = {{count_general}}</h2>
+      </div>
+    </div>
+    <div class="table-games">
+      <div *ngIf="show" class="row justify-content-center">
+        <div class="col-4">
+          <div [attr.class]="class_one">
+            {{cube_one}}
+          </div>
+        </div>
+        <div class="col-4">
+          <div [attr.class]="class_two">
+            {{cube_two}}
+          </div>
+        </div>
+        <div class="col-4">
+          <div [attr.class]="class_three">
+            {{cube_three}}
+          </div>
+        </div>
+        <div class="col-4">
+          <div [attr.class]="class_four">
+            {{cube_four}}
+          </div>
+        </div>
+        <div class="col-4">
+          <div [attr.class]="class_five">
+            {{cube_five}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="launch" class="row justify-content-center">
+      <div class="col-3 top-general">
+        <div class="btn-cube" (click)="start()">
+          <h3>Lanzar</h3>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!launch" class="row justify-content-center">
+      <div class="col-3 top-general">
+        <div class="btn-cube" (click)="restart()">
+          <h3>De nuevo</h3>
+        </div>
+      </div>
+      <div class="col-3 top-general">
+        <div class="btn-cube bg-blue" (click)="selection()">
+          <h3>Seleccionar</h3>
+        </div>
+      </div>
+      <div class="col-3 top-general">
+        <div class="btn-cube bg-red" (click)="continue()">
+          <h3>Quedarse</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4 top-general">
+    <div *ngIf="games.length > 0" class="table-responsive">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Turno</th>
+            <th class="text-center" scope="col">Jugador</th>
+            <th class="text-center" scope="col">Mano</th>
+            <th class="text-center" scope="col">Acumu</th>
+            <th class="text-center" scope="col">Puntaje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let game of games">
+            <th class="text-center" scope="row">{{game.turn}}</th>
+            <td class="text-center">{{game.player_name}}</td>
+            <td class="text-center">{{game.cube_one}},{{game.cube_two}},{{game.cube_three}},{{game.cube_four}},{{game.cube_five}}</td>
+            <td class="text-center">{{game.move}}</td>
+            <td class="text-center">{{game.point}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
