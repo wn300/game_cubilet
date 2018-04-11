@@ -188,3 +188,11 @@ h3, .btn, input {
 .show {
     display: block !important;
 }
+
+.hide-sort {
+    display: none !important;
+}
+
+.show-sort {
+    display: block !important;
+}
