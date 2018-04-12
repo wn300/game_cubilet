@@ -1,19 +1,24 @@
 <div *ngIf="players.length > 0" class="row justify-content-center">
-  <div *ngFor="let player of players" class="col-3">
-    <div class="row">
-      <div class="col-2">
+  <div *ngFor="let player of sort" class="col-3">
+    <div class="row top-general">
+      <div class="col-12 text-center">
         <h2>
           Jugador:
         </h2>
       </div>
-      <div class="col-3">
+      <div class="col-12 text-center">
         <h1>
           {{player.name}}
         </h1>
       </div>
-      <div class="col-3">
-        <div class="btn-cube" (click)="throw()">
+      <div *ngIf="!player.sort" class="col-12 text-center">
+        <div class="btn-cube" (click)="throw(player)">
           Lanzar
+        </div>
+      </div>
+      <div *ngIf="player.sort" class="col-12">
+        <div class="cube a" style="margin-left: 80px !important">
+          {{player.sort}}
         </div>
       </div>
     </div>

@@ -3,6 +3,12 @@ export interface Players {
     name: string
 }
 
+export interface Sort {
+    id: number,
+    name: string,
+    sort?: string
+}
+
 export interface Game {
     turn: string,
     player_id: number,

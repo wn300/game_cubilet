@@ -30,7 +30,8 @@ export class IndexComponent implements OnInit {
 
   startGame() {
     document.getElementsByTagName('app-index')[0].className = 'hide';
-    document.getElementsByTagName('app-game')[0].className = 'show';
+    // document.getElementsByTagName('app-game')[0].className = 'show';
+    document.getElementsByTagName('app-sort')[0].className = 'show';
     this.shredPlayers.setPlayersGame(this.players);
   }
 
