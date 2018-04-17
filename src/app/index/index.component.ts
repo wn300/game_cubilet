@@ -24,13 +24,13 @@ export class IndexComponent implements OnInit {
 
   addPlayer() {
     this.index += 1;
-    this.players.push({ id: this.index, name: this.player });
+    this.players.push({ id: this.index, name: this.player, sort_position: false });
     this.player = '';
   }
 
   startGame() {
     document.getElementsByTagName('app-index')[0].className = 'hide';
-    document.getElementsByTagName('app-game')[0].className = 'show';
+    document.getElementsByTagName('app-sort')[0].className = 'show';
     this.shredPlayers.setPlayersGame(this.players);
   }
 

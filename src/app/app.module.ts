@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { GeneralService } from './service/general.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ContainerGeneralComponent } from './container-general/container-general.component';
+import { SortComponent } from './sort/sort.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ContainerGeneralComponent } from './container-general/container-general
     HeaderComponent,
     GameComponent,
     IndexComponent,
-    ContainerGeneralComponent
+    ContainerGeneralComponent,
+    SortComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,9 @@
 export interface Players {
     id: number,
-    name: string
+    name: string,
+    sort_position?: boolean,
+    sort?: string,
+    sort_number?: number
 }
 
 export interface Game {

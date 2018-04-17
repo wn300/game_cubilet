@@ -106,7 +106,9 @@ h3, .btn, input {
     text-shadow: 1px 0px 1px rgb(181, 227, 233), 0 0 25px rgb(22, 75, 77), 0 0 5px rgb(77, 228, 255) !important;
 }
 
-.btn-cube{
+
+
+.btn-cube, .btn-cube-success{
     width: 80%;
     height: 40px;
     display: inline-block;
@@ -115,7 +117,7 @@ h3, .btn, input {
     padding: 2px    
 }
 
-.btn-cube{
+.btn-cube, .btn-cube-success{
     cursor: pointer;
     width: 150px;
     height: 40px;
@@ -138,9 +140,22 @@ h3, .btn, input {
     font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;  
 }
 
+.btn-cube-success{
+    background-color: #415beb;
+    -webkit-box-shadow:    0 8px 0 #3758c5, 0 15px 20px rgba(255, 255, 255, 0.35);
+    -moz-box-shadow: 0 8px 0 #3758c5, 0 15px 20px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 0 #3758c5, 0 15px 20px rgba(255, 255, 255, 0.35);
+}
+
 .btn-cube:hover{ 
     background-color: #ecdf6a;
     text-shadow: 0 -1px 1px rgba(175, 137, 49, 0.9), 0 0 5px rgba(255, 255, 255, 0.8);
+    color:#FFF;
+}
+
+.btn-cube-success:hover{
+    background-color: #6a88ec;
+    text-shadow: 0 -1px 1px rgba(49, 51, 175, 0.9), 0 0 5px rgba(255, 255, 255, 0.8);
     color:#FFF;
 }
 
@@ -187,4 +202,12 @@ h3, .btn, input {
 
 .show {
     display: block !important;
+}
+
+.cube-loser-sort {
+    background-color: #e2b3b3;
+}
+
+.cube-winner-sort {
+    background-color: #b3e2b9;
 }

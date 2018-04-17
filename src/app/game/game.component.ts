@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../service/general.service';
 import { Players, Game } from '../models/general';
 import { Route, Router } from '@angular/router';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-game',
@@ -39,6 +40,14 @@ export class GameComponent implements OnInit {
     this.shredPlayers.getPlayersGame()
       .subscribe((data: any) => {
         this.players = data;
+
+        if (this.players.length > 0) {
+          let count: number = 0;
+          this.players.forEach((element) => {
+            count += 1;
+            element.id = count
+          })
+        }
         this.turn_player = this.players[0];
       })
   }
@@ -68,11 +77,11 @@ export class GameComponent implements OnInit {
   clear(event: boolean, points_acumulates: number, moviments_acumulates: number) {
     this.show = false;
     this.launch = true;
-
+   
     this.games
       .filter((game: any) => game.turn.toUpperCase().indexOf(this.count_turns.toString().toUpperCase()) >= 0)
       .forEach((element) => {
-        if (this.games[this.games.length - 1].player_id !== element.player_id) {
+        if (this.games[this.games.length - 1].player_name !== element.player_name) {
           if (element.point > 0) {
             if (element.point < points_acumulates) {
               element.point = 0;
@@ -91,11 +100,42 @@ export class GameComponent implements OnInit {
         }
       })
 
-   
+    this.count_by_player = 0;
+
+    this.count_player += 1;
+
+    if (event) {
+      if (this.players.length > this.count_player) {
+        this.turn_player = this.players[this.count_player];
+      } else {
+
+        if (!this.validateWinnerFinal(points_acumulates, moviments_acumulates)) {
+          if (!confirm('Partida terminada comienza la siguiente ronda')) {
+            this.orderByWinner();
+            this.count_turns += 1;
+            this.ngOnInit()
+          } else {
+            this.orderByWinner();
+
+            this.count_turns += 1;
+            this.ngOnInit()
+          }
+        }
+      }
+    } else {
+      if (!this.validateWinnerFinal(points_acumulates, moviments_acumulates)) {
+        this.count_turns += 1;
+        this.ngOnInit()
+      }
+    }
+
+  }
+
+  validateWinnerFinal(points_acumulates: number, moviments_acumulates: number): boolean {
     for (var i = 0; i < this.players.length; i++) {
       let sum_points: number = 0;
       this.games
-        .filter((game: any) => game.player_id.toString().toUpperCase().indexOf(this.players[i].id.toString().toUpperCase()) >= 0)
+        .filter((game: any) => game.player_name.toString().toUpperCase().indexOf(this.players[i].name.toString().toUpperCase()) >= 0)
         .forEach((element) => {
           sum_points += element.point;
         })
@@ -105,44 +145,76 @@ export class GameComponent implements OnInit {
         } else {
           this.finishedGame();
         }
-      }
-    }
-
-    this.count_by_player = 0;
-
-    this.count_player += 1;
-
-    if (event) {
-      if (this.players.length > this.count_player) {
-        this.turn_player = this.players[this.count_player];
+        return true
       } else {
-        if (!confirm('Partida terminada comienza la siguiente ronda')) {
-          this.count_turns += 1;
-          this.ngOnInit()
-        } else {
-          this.count_turns += 1;
-          this.ngOnInit()
-        }
+        return false
       }
-    } else {
-      this.count_turns += 1;
-      this.ngOnInit()
     }
+  }
 
+  orderByWinner() {
+    let cont: number = 0;
+    let winner: any;
+    let index_new: number = 19;
+
+    this.games
+      .filter((game: any) => game.turn.toUpperCase().indexOf(this.count_turns.toString().toUpperCase()) >= 0)
+      .forEach((element) => {
+        if (element.point > 0) {
+          winner = this.players
+            .filter((player: any) => player.id.toString().indexOf(element.player_id.toString()) >= 0);
+        }
+      });
+
+    this.players.forEach((element) => {
+      if (cont === 0) {
+        if (element.id !== winner[0].id) {
+          index_new += 1;
+          element.id = index_new
+        } else {
+          cont += 1;
+          element.id = cont;
+        }
+      } else {
+        cont += 1;
+        element.id = cont;
+      }
+    });
+
+
+    this.players = this.players.sort(function (a, b) {
+      if (a.id > b.id) {
+        return 1;
+      }
+      if (a.id < b.id) {
+        return -1;
+      }
+      return 0;
+    });
+
+    cont = 0;
+    this.players.forEach((element) => {
+      cont += 1;
+      element.id = cont
+    })
   }
 
   restart() {
-    if (this.count_general > 0) {
-      if (this.count_general === this.count_by_player) {
-        if (!confirm('Ya supero los ' + this.count_general + ' intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
+    if (this.count_by_player < 3) {
+      if (this.count_general > 0) {
+        if (this.count_general === this.count_by_player) {
+          if (!confirm('Ya supero los ' + this.count_general + ' intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
+        }
       }
+      this.count_by_player += 1;
+      this.random();
+    } else {
+      if (!confirm('Ya supero los 3 intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
     }
-    this.count_by_player += 1;
-    this.random();
   }
 
   selection() {
-    if (this.count_selection < 3) {
+    if (this.count_by_player < 3) {
       if (this.count_general > 0) {
         if (this.count_general === this.count_by_player) {
           if (!confirm('Ya supero los ' + this.count_general + ' intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
@@ -446,6 +518,7 @@ export class GameComponent implements OnInit {
     let random_four = Math.floor((Math.random() * (14 - 9 + 1)) + 9);
     let random_five = Math.floor((Math.random() * (14 - 9 + 1)) + 9);
 
+
     switch (random_one) {
       case 9:
         this.cube_one = '9'
@@ -599,7 +672,7 @@ export class GameComponent implements OnInit {
         winner: false,
         turn: this.count_turns.toString(),
       })
-
+      this.orderByWinner();
       this.clear(false, points_acumulates, moviments_acumulates);
     } else {
       points_acumulates = 5
@@ -617,7 +690,7 @@ export class GameComponent implements OnInit {
         winner: false,
         turn: this.count_turns.toString(),
       })
-
+      this.orderByWinner();
       this.clear(false, points_acumulates, moviments_acumulates);
     }
   }
@@ -639,7 +712,7 @@ export class GameComponent implements OnInit {
         winner: false,
         turn: this.count_turns.toString(),
       })
-
+      this.orderByWinner();
       this.clear(false, points_acumulates, moviments_acumulates);
     } else {
       points_acumulates = 2
@@ -657,7 +730,7 @@ export class GameComponent implements OnInit {
         winner: false,
         turn: this.count_turns.toString(),
       })
-
+      this.orderByWinner();
       this.clear(false, points_acumulates, moviments_acumulates);
     }
   }
@@ -677,7 +750,6 @@ export class GameComponent implements OnInit {
       winner: false,
       turn: this.count_turns.toString(),
     })
-
     this.clear(true, points_acumulates, moviments_acumulates);
   }
 }

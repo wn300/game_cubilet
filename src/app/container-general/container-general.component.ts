@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./container-general.component.css']
 })
 export class ContainerGeneralComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
