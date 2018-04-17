@@ -66,8 +66,8 @@
     </div>
   </div>
   <div class="col-4 top-general">
-    <div *ngIf="games.length > 0" class="table-responsive">
-      <table class="table table-sm">
+    <div *ngIf="games.length > 0" class="table-responsive" style="overflow-y: auto; height: calc(80vh);">
+      <table class="table table-sm table-striped">
         <thead>
           <tr>
             <th class="text-center" scope="col">Turno</th>

@@ -1,5 +1,5 @@
 <div *ngIf="players.length > 0" class="row justify-content-center">
-  <div *ngFor="let player of sort" class="col-3">
+  <div *ngFor="let player of players" class="col-3">
     <div class="row top-general">
       <div class="col-12 text-center">
         <h2>
@@ -16,11 +16,30 @@
           Lanzar
         </div>
       </div>
+      <div *ngIf="player.sort_position && viewSecond" class="col-12 text-center">
+        <div class="btn-cube" (click)="throw(player)">
+          Lanzar
+        </div>
+      </div>
       <div *ngIf="player.sort" class="col-12">
-        <div class="cube a" style="margin-left: 80px !important">
+        <div class="cube a"  [ngClass]="{'cube-winner-sort': player.sort_position}" style="margin-left: 80px !important">
           {{player.sort}}
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="validate_sort" class="row top-general justify-content-center">
+  <div class="col-2">
+    <div class="btn-cube" (click)="validate()">
+      Confirmar
+    </div>
+  </div>
+</div>
+<div *ngIf="viewNext" class="row top-general justify-content-center">
+  <div class="col-2">
+    <div class="btn-cube-success" (click)="next()">
+      Comenzar
     </div>
   </div>
 </div>
