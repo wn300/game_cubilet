@@ -700,12 +700,14 @@ export class GameComponent implements OnInit {
   }
 
   cubeSelection(cube: string) {
-    if (this.cubes_selection.filter((data: any) => data.name.toUpperCase().indexOf(cube.toString().toUpperCase()) >= 0).length > 0) {
-      this.cubes_selection.splice(this.cubes_selection.findIndex(data => data.name === cube), 1);
-      document.getElementById(cube).removeAttribute("style");
-    } else {
-      this.cubes_selection.push({ name: cube });
-      document.getElementById(cube).setAttribute("style", "box-shadow: 1px 0px 1px rgb(181, 231, 233), 0 0 25px rgb(254, 255, 255), 0 0 5px rgb(77, 213, 255) !important; background-color: #b3e2b9; cursor: pointer;");
+    if (this.launchSelection) {
+      if (this.cubes_selection.filter((data: any) => data.name.toUpperCase().indexOf(cube.toString().toUpperCase()) >= 0).length > 0) {
+        this.cubes_selection.splice(this.cubes_selection.findIndex(data => data.name === cube), 1);
+        document.getElementById(cube).removeAttribute("style");
+      } else {
+        this.cubes_selection.push({ name: cube });
+        document.getElementById(cube).setAttribute("style", "box-shadow: 1px 0px 1px rgb(181, 231, 233), 0 0 25px rgb(254, 255, 255), 0 0 5px rgb(77, 213, 255) !important; background-color: #b3e2b9; cursor: pointer;");
+      }
     }
   }
 
