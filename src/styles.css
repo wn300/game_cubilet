@@ -82,6 +82,22 @@ h3, .btn, input {
     text-align: center;    
 }
 
+.cube-change {
+    box-shadow: 1px 0px 1px rgb(181, 231, 233), 0 0 25px rgb(254, 255, 255), 0 0 5px rgb(77, 213, 255) !important;
+    cursor: pointer;
+}
+
+.cube-change:hover {
+    background-color: #b3e2b9;
+    cursor: pointer;
+}
+
+.cube-selection {
+    box-shadow: 1px 0px 1px rgb(181, 231, 233), 0 0 25px rgb(254, 255, 255), 0 0 5px rgb(77, 213, 255) !important;
+    background-color: #b3e2b9;
+    cursor: pointer;
+}
+
 .nine {
     text-shadow: 1px 0px 1px rgb(233, 181, 181), 0 0 25px rgb(77, 22, 22), 0 0 5px rgb(255, 77, 77) !important;
 }

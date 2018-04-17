@@ -19,3 +19,7 @@ export interface Game {
     point: number,
     winner: boolean
 }
+
+export interface Cube {
+    name: string
+}

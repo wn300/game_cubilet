@@ -14,56 +14,66 @@
     <div class="table-games">
       <div *ngIf="show" class="row justify-content-center">
         <div class="col-4">
-          <div [attr.class]="class_one">
+          <div id="divone" [attr.class]="class_one" (click)="cubeSelection('divone')"> 
             {{cube_one}}
           </div>
         </div>
         <div class="col-4">
-          <div [attr.class]="class_two">
+          <div id="divtwo" [attr.class]="class_two" (click)="cubeSelection('divtwo')">
             {{cube_two}}
           </div>
         </div>
         <div class="col-4">
-          <div [attr.class]="class_three">
+          <div  id="divthree"[attr.class]="class_three" (click)="cubeSelection('divthree')">
             {{cube_three}}
           </div>
         </div>
         <div class="col-4">
-          <div [attr.class]="class_four">
+          <div id="divfour" [attr.class]="class_four" (click)="cubeSelection('divfour')">
             {{cube_four}}
           </div>
         </div>
         <div class="col-4">
-          <div [attr.class]="class_five">
+          <div id="divfive" [attr.class]="class_five" (click)="cubeSelection('divfive')">
             {{cube_five}}
           </div>
         </div>
       </div>
     </div>
-    <div *ngIf="launch" class="row justify-content-center">
+    <div *ngIf="!launchSelection">
+      <div *ngIf="launch" class="row justify-content-center">
+        <div class="col-3 top-general">
+          <div class="btn-cube" (click)="start()">
+            <h3>Lanzar</h3>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!launch" class="row justify-content-center">
+        <div class="col-3 top-general">
+          <div class="btn-cube" (click)="restart()">
+            <h3>De nuevo</h3>
+          </div>
+        </div>
+        <div class="col-3 top-general">
+          <div class="btn-cube bg-blue" (click)="selection()">
+            <h3>Seleccionar</h3>
+          </div>
+        </div>
+        <div class="col-3 top-general">
+          <div class="btn-cube bg-red" (click)="continue()">
+            <h3>Quedarse</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="launchSelection && cubes_selection.length > 0" class="row justify-content-center">
       <div class="col-3 top-general">
-        <div class="btn-cube" (click)="start()">
+        <div class="btn-cube" (click)="restartSelection()">
           <h3>Lanzar</h3>
         </div>
       </div>
     </div>
-    <div *ngIf="!launch" class="row justify-content-center">
-      <div class="col-3 top-general">
-        <div class="btn-cube" (click)="restart()">
-          <h3>De nuevo</h3>
-        </div>
-      </div>
-      <div class="col-3 top-general">
-        <div class="btn-cube bg-blue" (click)="selection()">
-          <h3>Seleccionar</h3>
-        </div>
-      </div>
-      <div class="col-3 top-general">
-        <div class="btn-cube bg-red" (click)="continue()">
-          <h3>Quedarse</h3>
-        </div>
-      </div>
-    </div>
+
   </div>
   <div class="col-4 top-general">
     <div *ngIf="games.length > 0" class="table-responsive" style="overflow-y: auto; height: calc(80vh);">

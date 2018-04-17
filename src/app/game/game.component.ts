@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../service/general.service';
-import { Players, Game } from '../models/general';
+import { Players, Game, Cube } from '../models/general';
 import { Route, Router } from '@angular/router';
 import { debug } from 'util';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-game',
@@ -35,6 +36,9 @@ export class GameComponent implements OnInit {
   public count_general: number = 0;
   public count_by_player: number = null;
   public count_selection: number = null;
+
+  public launchSelection: boolean = false;
+  public cubes_selection: Cube[] = [];
 
   constructor(private shredPlayers: GeneralService, private router: Router) {
     this.shredPlayers.getPlayersGame()
@@ -77,7 +81,7 @@ export class GameComponent implements OnInit {
   clear(event: boolean, points_acumulates: number, moviments_acumulates: number) {
     this.show = false;
     this.launch = true;
-   
+
     this.games
       .filter((game: any) => game.turn.toUpperCase().indexOf(this.count_turns.toString().toUpperCase()) >= 0)
       .forEach((element) => {
@@ -208,20 +212,6 @@ export class GameComponent implements OnInit {
       }
       this.count_by_player += 1;
       this.random();
-    } else {
-      if (!confirm('Ya supero los 3 intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
-    }
-  }
-
-  selection() {
-    if (this.count_by_player < 3) {
-      if (this.count_general > 0) {
-        if (this.count_general === this.count_by_player) {
-          if (!confirm('Ya supero los ' + this.count_general + ' intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
-        }
-      }
-      this.count_by_player += 1;
-      this.count_selection += 1;
     } else {
       if (!confirm('Ya supero los 3 intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
     }
@@ -508,6 +498,214 @@ export class GameComponent implements OnInit {
           this.sinCarabina(points_acumulates, moviments_acumulates);
         }
       }
+    }
+  }
+
+  selection() {
+    if (this.count_by_player < 3) {
+      if (this.count_general > 0) {
+        if (this.count_general === this.count_by_player) {
+          if (!confirm('Ya supero los ' + this.count_general + ' intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
+          this.launchSelection = false;
+        }
+        else {
+          alert("Seleccione los dados que quiere cambiar.")
+          this.class_one = this.class_one + ' cube-change';
+          this.class_two = this.class_two + ' cube-change';
+          this.class_three = this.class_three + ' cube-change';
+          this.class_four = this.class_four + ' cube-change';
+          this.class_five = this.class_five + ' cube-change';
+          this.launchSelection = true;
+        }
+      } else {
+        alert("Seleccione los dados que quiere cambiar.")
+        this.class_one = this.class_one + ' cube-change';
+        this.class_two = this.class_two + ' cube-change';
+        this.class_three = this.class_three + ' cube-change';
+        this.class_four = this.class_four + ' cube-change';
+        this.class_five = this.class_five + ' cube-change';
+        this.launchSelection = true;
+      }
+      this.count_by_player += 1;
+      this.count_selection += 1;
+    } else {
+      if (!confirm('Ya supero los 3 intentos posibles de click en ok o cancelar')) { this.continue(); } else { this.continue(); }
+      this.launchSelection = false;
+    }
+  }
+
+  randomSelection(cube: string) {
+    switch (cube) {
+      case 'divone':
+        let random_one = Math.floor((Math.random() * (14 - 9 + 1)) + 9);
+        switch (random_one) {
+          case 9:
+            this.cube_one = '9'
+            this.class_one = 'cube nine';
+            break;
+          case 10:
+            this.cube_one = '10'
+            this.class_one = 'cube then';
+            break;
+          case 11:
+            this.cube_one = 'J'
+            this.class_one = 'cube j';
+            break;
+          case 12:
+            this.cube_one = 'Q'
+            this.class_one = 'cube q';
+            break;
+          case 13:
+            this.cube_one = 'K'
+            this.class_one = 'cube k';
+            break;
+          case 14:
+            this.cube_one = 'A'
+            this.class_one = 'cube a';
+            break;
+        }
+        break;
+      case 'divtwo':
+        let random_two = Math.floor((Math.random() * (14 - 9 + 1)) + 9);
+        switch (random_two) {
+          case 9:
+            this.cube_two = '9'
+            this.class_two = 'cube nine';
+            break;
+          case 10:
+            this.cube_two = '10'
+            this.class_two = 'cube then';
+            break;
+          case 11:
+            this.cube_two = 'J'
+            this.class_two = 'cube j';
+            break;
+          case 12:
+            this.cube_two = 'Q'
+            this.class_two = 'cube q';
+            break;
+          case 13:
+            this.cube_two = 'K'
+            this.class_two = 'cube k';
+            break;
+          case 14:
+            this.cube_two = 'A'
+            this.class_two = 'cube a';
+            break;
+        }
+        break;
+      case 'divthree':
+        let random_three = Math.floor((Math.random() * (14 - 9 + 1)) + 9);
+        switch (random_three) {
+          case 9:
+            this.cube_three = '9'
+            this.class_three = 'cube nine';
+            break;
+          case 10:
+            this.cube_three = '10'
+            this.class_three = 'cube then';
+            break;
+          case 11:
+            this.cube_three = 'J'
+            this.class_three = 'cube j';
+            break;
+          case 12:
+            this.cube_three = 'Q'
+            this.class_three = 'cube q';
+            break;
+          case 13:
+            this.cube_three = 'K'
+            this.class_three = 'cube k';
+            break;
+          case 14:
+            this.cube_three = 'A'
+            this.class_three = 'cube a';
+            break;
+        }
+        break;
+      case 'divfour':
+        let random_four = Math.floor((Math.random() * (14 - 9 + 1)) + 9);
+        switch (random_four) {
+          case 9:
+            this.cube_four = '9'
+            this.class_four = 'cube nine';
+            break;
+          case 10:
+            this.cube_four = '10'
+            this.class_four = 'cube then';
+            break;
+          case 11:
+            this.cube_four = 'J'
+            this.class_four = 'cube j';
+            break;
+          case 12:
+            this.cube_four = 'Q'
+            this.class_four = 'cube q';
+            break;
+          case 13:
+            this.cube_four = 'K'
+            this.class_four = 'cube k';
+            break;
+          case 14:
+            this.cube_four = 'A'
+            this.class_four = 'cube a';
+            break;
+        }
+        break;
+      case 'divfive':
+        let random_five = Math.floor((Math.random() * (14 - 9 + 1)) + 9);
+        switch (random_five) {
+          case 9:
+            this.cube_five = '9'
+            this.class_five = 'cube nine';
+            break;
+          case 10:
+            this.cube_five = '10'
+            this.class_five = 'cube then';
+            break;
+          case 11:
+            this.cube_five = 'J'
+            this.class_five = 'cube j';
+            break;
+          case 12:
+            this.cube_five = 'Q'
+            this.class_five = 'cube q';
+            break;
+          case 13:
+            this.cube_five = 'K'
+            this.class_five = 'cube k';
+            break;
+          case 14:
+            this.cube_five = 'A'
+            this.class_five = 'cube a';
+            break;
+        }
+        break;
+    }
+  }
+
+  restartSelection() {
+    this.cubes_selection.forEach((element) => {
+      this.randomSelection(element.name);
+      document.getElementById(element.name).removeAttribute("style");
+    })
+
+    this.class_one = this.class_one.replace(' cube-change', '');
+    this.class_two = this.class_two.replace(' cube-change', '');
+    this.class_three = this.class_three.replace(' cube-change', '');;
+    this.class_four = this.class_four.replace(' cube-change', '');
+    this.class_five = this.class_five.replace(' cube-change', '');
+    this.launchSelection = false;
+    this.cubes_selection = [];
+  }
+
+  cubeSelection(cube: string) {
+    if (this.cubes_selection.filter((data: any) => data.name.toUpperCase().indexOf(cube.toString().toUpperCase()) >= 0).length > 0) {
+      this.cubes_selection.splice(this.cubes_selection.findIndex(data => data.name === cube), 1);
+      document.getElementById(cube).removeAttribute("style");
+    } else {
+      this.cubes_selection.push({ name: cube });
+      document.getElementById(cube).setAttribute("style", "box-shadow: 1px 0px 1px rgb(181, 231, 233), 0 0 25px rgb(254, 255, 255), 0 0 5px rgb(77, 213, 255) !important; background-color: #b3e2b9; cursor: pointer;");
     }
   }
 
