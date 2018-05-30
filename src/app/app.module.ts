@@ -12,6 +12,7 @@ import { GeneralService } from './service/general.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ContainerGeneralComponent } from './container-general/container-general.component';
 import { SortComponent } from './sort/sort.component';
+import { FlowersComponent } from './flowers/flowers.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SortComponent } from './sort/sort.component';
     GameComponent,
     IndexComponent,
     ContainerGeneralComponent,
-    SortComponent
+    SortComponent,
+    FlowersComponent
   ],
   imports: [
     BrowserModule,

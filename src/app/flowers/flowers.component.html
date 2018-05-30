@@ -1,0 +1,557 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="form-group">
+        <label for="exampleSelect1">Duración</label>
+        <select [(ngModel)]="cantTime" class="form-control" (change)="changeSelector()">
+          <option value="-1">Cantidad</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label for="exampleSelect1">.</label>
+        <select [(ngModel)]="period" class="form-control" (change)="changeSelector()">
+          <option value="-1">Periodo</option>
+          <option value="semanas">Semanas</option>
+          <option value="meses">Meses</option>
+          <option value="años">Años</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-6" *ngIf="period !== '-1' && cantTime !== '-1'">
+      <div class="alert alert-warning" style="margin-top: 5px;" role="alert" style="margin-top: 15px">
+        Tiempo en {{period}}&nbsp;
+        <div class="btn btn-sm btn-primary" (click)="plusTimer()">
+          Aumentar
+        </div>
+        <div class="btn btn-sm btn-warning" (click)="minusTimer()">
+          Disminuir
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <strong *ngIf="timer < cantTime" style="color: brown; font-size: 20px">{{timer}}</strong>
+        <strong *ngIf="timer == cantTime" style="color: rgb(56, 165, 42); font-size: 20px">{{timer}}</strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{timerCant / 1000}} Segundos
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="colSizeSiembra != ''">
+    <div [attr.class]="colSizeSiembra">
+      <div class="table-flowers">
+        <div class="row">
+          <div class="col-3">
+            <div class="row">
+              <div class="col-12">
+                <div class="table-flowers-siembra" style="height: calc(63vh) !important;">
+                  <div class="flowers" *ngFor="let flower of objectFlowers1" style="float:left; background-color: rgb(218, 39, 39); box-shadow: 0px 0px 14px 6px rgb(218, 39, 39)">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="row">
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers2" style="float:left; background-color: rgb(255, 255, 255); box-shadow: 0px 0px 10px 6px rgb(255, 255, 255);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers3" style="float:left; background-color: rgb(252, 214, 0); box-shadow: 0px 0px 14px 6px rgb(252, 214, 0);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers4" style="float:left; background-color: rgb(252, 101, 0); box-shadow: 0px 0px 14px 6px rgb(252, 101, 0);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers5" style="float:left; background-color: rgb(247, 148, 148); box-shadow: 0px 0px 14px 6px rgb(247, 148, 148);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers6" style="float:left; background-color: rgb(255, 100, 100); box-shadow: 0px 0px 14px 6px rgb(255, 100, 100);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers7" style="float:left; background-color: rgb(233, 190, 190); box-shadow: 0px 0px 14px 6px rgb(233, 190, 190);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers8" style="float:left; background-color: rgb(31, 64, 250); box-shadow: 0px 0px 14px 6px rgb(31, 64, 250);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers9" style="float:left; background-color: rgb(108, 31, 250); box-shadow: 0px 0px 14px 6px rgb(108, 31, 250);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers10" style="float:left; background-color: rgb(250, 31, 239); box-shadow: 0px 0px 14px 6px rgb(250, 31, 239);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers11" style="float:left; background-color: rgb(247, 178, 31); box-shadow: 0px 0px 14px 6px rgb(247, 178, 31);">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="table-flowers-siembra">
+                  <div class="flowers" *ngFor="let flower of objectFlowers12" style="float:left; background-color: rgb(1, 255, 14); box-shadow: 0px 0px 14px 6px rgb(1, 255, 14);">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="timer == cantTime" class="row" style="margin-top: 30px">
+    <div class="col-3">
+      <div class="form-group row">
+        <label for="exampleSelect1" class="col-3">Epoca</label>
+        <select [(ngModel)]="epoca" class="form-control form-control-sm col-9" (change)="changeSelectorEpoca()">
+          <option value="-1">Seleccione</option>
+          <option value="46">Valentin</option>
+          <option value="48">Madres</option>
+          <option value="19">Navidad</option>
+          <option value="17">Pascua</option>
+          <option value="14">Acción de gracias</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Media</label>
+      <label>{{media}}</label>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Desviación</label>
+      <label>{{desviacion}}</label>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Limite Inferior</label>
+      <label>{{inferior}}</label>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Limite Superior</label>
+      <label>{{superior}}</label>
+    </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 30px">
+    <div class="col-12">
+      <div class="alert alert-success">
+        <strong>PRONOSTICO DE DEMANDA</strong>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 15px">
+    <div class="col-6">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm">
+          <thead>
+            <tr>
+              <th colspan="4" scope="col">DEMANDA</th>
+            </tr>
+            <tr>
+              <th scope="col">EPOCA</th>
+              <th scope="col">Media (Millones)</th>
+              <th scope="col">Deviación</th>
+              <th scope="col">Cantidad Desviacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Valentin</th>
+              <td>46</td>
+              <td>5%</td>
+              <td>2.3</td>
+            </tr>
+            <tr>
+              <th scope="row">Madres</th>
+              <td>48</td>
+              <td>2%</td>
+              <td>0.96</td>
+            </tr>
+            <tr>
+              <th scope="row">Navidad</th>
+              <td>19</td>
+              <td>7%</td>
+              <td>1.33</td>
+            </tr>
+            <tr>
+              <th scope="row">Pascua</th>
+              <td>17</td>
+              <td>4%</td>
+              <td>0.68</td>
+            </tr>
+            <tr>
+              <th scope="row">Acción de gracias</th>
+              <td>14</td>
+              <td>5%</td>
+              <td>0.7</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 15px">
+    <div class="col-6">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm">
+          <thead>
+            <!-- <tr>
+              <th colspan="3" scope="col">DEMANDA</th>
+            </tr> -->
+            <tr>
+              <th scope="col">Año</th>
+              <th scope="col">Aleatorio</th>
+              <th scope="col">Demanda</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let object of objectDemanda">
+              <th scope="row">{{object.id}}</th>
+              <td>{{object.random}}</td>
+              <td>{{object.costo}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 30px">
+    <div class="col-12">
+      <div class="alert alert-info">
+        <strong>PARTICIPACIÓN DE TIPO DE FLORES EN LA PRODUCCIÓN</strong>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 15px">
+    <div class="col-4">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm">
+          <thead>
+            <tr>
+              <th colspan="2" scope="col">MEDIA</th>
+            </tr>
+            <tr>
+              <th scope="col">Epoca</th>
+              <th scope="col">Roja</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Valentin</th>
+              <td>85%</td>
+            </tr>
+            <tr>
+              <th scope="row">Madres</th>
+              <td>78%</td>
+            </tr>
+            <tr>
+              <th scope="row">Navidad</th>
+              <td>50%</td>
+            </tr>
+            <tr>
+              <th scope="row">Pascua</th>
+              <td>68%</td>
+            </tr>
+            <tr>
+              <th scope="row">Acción de Gracias</th>
+              <td>58%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm">
+          <thead>
+            <tr>
+              <th colspan="2" scope="col">DESVIACIÓN</th>
+            </tr>
+            <tr>
+              <th scope="col">Epoca</th>
+              <th scope="col">Roja</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Valentin</th>
+              <td>3%</td>
+            </tr>
+            <tr>
+              <th scope="row">Madres</th>
+              <td>11%</td>
+            </tr>
+            <tr>
+              <th scope="row">Navidad</th>
+              <td>9%</td>
+            </tr>
+            <tr>
+              <th scope="row">Pascua</th>
+              <td>7%</td>
+            </tr>
+            <tr>
+              <th scope="row">Acción de Gracias</th>
+              <td>4%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm">
+          <thead>
+            <tr>
+              <th colspan="2" scope="col">FLORES DE COLOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Blanco</th>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <th scope="row">Amarillo</th>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <th scope="row">Naranja</th>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <th scope="row">Rosa oscuro</th>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <th scope="row">Rosa claro</th>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <th scope="row">Nov rosada</th>
+              <td>8%</td>
+            </tr>
+            <tr>
+              <th scope="row">Nov lavanda</th>
+              <td>5%</td>
+            </tr>
+            <tr>
+              <th scope="row">Nov verde</th>
+              <td>4%</td>
+            </tr>
+            <tr>
+              <th scope="row">Nov durazno</th>
+              <td>3%</td>
+            </tr>
+            <tr>
+              <th scope="row">Nov Roja</th>
+              <td>1%</td>
+            </tr>
+            <tr>
+              <th scope="row">Nov amarilla/naranja</th>
+              <td>4%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 15px">
+    <div class="col-2">
+      <label for="exampleSelect1">Media</label>
+      <label>{{mediapor}}</label>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Desviación</label>
+      <label>{{desviacionpor}}</label>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Limite Inferior</label>
+      <label>{{inferiorpor}}</label>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Limite Superior</label>
+      <label>{{superiorpor}}</label>
+    </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 15px">
+    <div class="col-6">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm">
+          <thead>
+            <tr>
+              <th colspan="4" scope="col">PORCENTAJE DE FLORES</th>
+            </tr>
+            <tr>
+              <th scope="col">Año</th>
+              <th scope="col">Aleatorio</th>
+              <th scope="col">Roja</th>
+              <th scope="col">Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let object of objectPorcentaje">
+              <th scope="row">{{object.id}}</th>
+              <td>{{object.random}}</td>
+              <td>{{object.roja}}%</td>
+              <td>{{object.color}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm">
+          <thead>
+            <tr>
+              <th colspan="3" scope="col">UNIDADES DE VENTA</th>
+            </tr>
+            <tr>
+              <th scope="col">Año</th>
+              <th scope="col">Roja</th>
+              <th scope="col">Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let object of objectVentaFlores">
+              <th>{{object.id}}</th>
+              <td>{{object.roja}}</td>
+              <td>{{object.color}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-sm">
+            <thead>
+              <tr>
+                <th colspan="12" scope="col">CADA COLOR</th>
+              </tr>
+              <tr>
+                <th scope="col">Año</th>
+                <th scope="col">Blanco</th>
+                <th scope="col">Amarillo</th>
+                <th scope="col">Naranja</th>
+                <th scope="col">Rosa oscuro</th>
+                <th scope="col">Rosa claro</th>
+                <th scope="col">Nov rosada</th>
+                <th scope="col">Nov lavanda</th>
+                <th scope="col">Nov verde</th>
+                <th scope="col">Nov durazno</th>
+                <th scope="col">Nov roja</th>
+                <th scope="col">Nov amarilla naranja</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let object of objectColores">
+                <th>{{object.id}}</th>
+                <td>{{object.blanco}}</td>
+                <td>{{object.amarillo}}</td>
+                <td>{{object.naranja}}</td>
+                <td>{{object.oscuro}}</td>
+                <td>{{object.claro}}</td>
+                <td>{{object.rosado}}</td>
+                <td>{{object.lavanda}}</td>
+                <td>{{object.verde}}</td>
+                <td>{{object.durazno}}</td>
+                <td>{{object.roja}}</td>
+                <td>{{object.amarillanaranja}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 30px">
+    <div class="col-12">
+      <div class="alert alert-danger">
+        <strong>AREA A CULTIVAR</strong>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="epoca != '-1'" class="row" style="margin-top: 15px">
+    <div class="col-6">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm">
+          <thead>
+            <tr>
+              <th colspan="3" scope="col">RAZON DE PRODUCTIVIDAD: 140</th>
+            </tr>
+            <tr>
+              <th colspan="3" scope="col">METROS CUADRADOS</th>
+            </tr>
+            <tr>
+              <th scope="col">Año</th>
+              <th scope="col">Roja</th>
+              <th scope="col">Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let object of objectArea">
+              <th>{{object.id}}</th>
+              <td>{{object.roja}}</td>
+              <td>{{object.color}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

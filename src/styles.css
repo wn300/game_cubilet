@@ -1,3 +1,6 @@
+:root {
+    --bg-body:#842525;
+}
 /* You can add global styles to this file, and also import other style files */
 
 @font-face {
@@ -11,7 +14,7 @@
 }
 
 body {
-    background-color: #842525 !important;
+    background-color: var(--bg-body) !important;
 }
 
 nav{
@@ -45,15 +48,26 @@ h3, .btn, input {
 .title {
     color: #ffffff;
     font-size: 20px;
-    text-shadow: 1px 0px 1px rgb(233, 181, 181), 0 0 25px rgb(77, 22, 22), 0 0 5px rgb(255, 77, 77) !important;
+    text-shadow: 1px 0px 1px rgb(233, 181, 181), 0 0 25px var(--bg-body), 0 0 5px var(--bg-body) !important;
     font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive !important;
 }
+
+.line-color {
+    border-left: 2px solid var(--bg-body);
+}
+
+span:hover {
+    color: #ffffff;
+    cursor: pointer;
+    text-shadow: 1px 0px 1px rgb(181, 233, 184), 0 0 25px rgb(22, 77, 27), 0 0 5px rgb(77, 255, 101) !important;
+    font-size: 25px;
+   }
 
 .front {
     background-color: rgb(214, 214, 172); 
     margin-top: 15px;
     width: 100%;
-    min-height: calc(85vh) !important;
+    min-height: calc(90vh) !important;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12); 
     border-radius: 2px
 }
@@ -67,6 +81,35 @@ h3, .btn, input {
     background-color: #2d963b;
     border-radius: 30%;
     box-shadow: -11px 16px 7px 0 rgba(0,0,0,.2), 0 5px 1px 0 rgba(0,0,0,.14), -6px 10px 5px -1px rgba(0,0,0,.12)
+}
+
+.table-flowers {
+    min-height: calc(70vh); 
+    border: 10px solid rgb(73, 56, 36);
+    margin-top: 20px;
+    background-color: rgb(180, 158, 121);
+    border-radius: 5%;
+    box-shadow: -11px 16px 7px 0 rgba(0,0,0,.2), 0 5px 1px 0 rgba(0,0,0,.14), -6px 10px 5px -1px rgba(0,0,0,.12)
+}
+
+.table-flowers-siembra{
+    height: calc(20vh); 
+    width: 80%; 
+    margin-left: 10%; 
+    border: 5px solid rgb(133, 233, 150); 
+    margin-top: 10px;
+    background-color: #2d963b;
+    border-radius: 10%;
+    box-shadow: -11px 16px 7px 0 rgba(0,0,0,.2), 0 5px 1px 0 rgba(0,0,0,.14), -6px 10px 5px -1px rgba(0,0,0,.12)
+}
+
+.flowers {
+    border-radius: 50%;
+    border: transparent;   
+    width: 4%;
+    height: 2%;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 .cube{

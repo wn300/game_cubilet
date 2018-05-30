@@ -14,6 +14,7 @@ export class IndexComponent implements OnInit {
   public index: number = 0;
 
   constructor(private shredPlayers: GeneralService) {
+    document.documentElement.style.setProperty(`--bg-body`, '#842525');
     this.shredPlayers.getGame().subscribe((data:any) => {
       this.players = []
     })
